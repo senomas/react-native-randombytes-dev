@@ -1,5 +1,9 @@
 # react-native-randombytes
 
+USE INSECURE Math.random DO WITH YOUR OWN RISK
+
+used for un-ejected react native with expo 25
+
 ## Usage
 
 ```js
