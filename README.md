@@ -4,20 +4,22 @@ USE INSECURE Math.random DO WITH YOUR OWN RISK
 
 used for un-ejected react native with expo 25
 
+original: https://github.com/mvayngrib/react-native-randombytes
+
 ## Usage
 
 ```js
-var randomBytes = require('react-native-randombytes')
+var randomBytes = require("react-native-randombytes");
 
 // synchronous API
 // uses SJCL
-var rand = randomBytes(4)
+var rand = randomBytes(4);
 
 // asynchronous API
 // uses iOS-side SecRandomCopyBytes
 randomBytes(4, (err, bytes) => {
-  console.log(bytes.toString('hex'))
-})
+  console.log(bytes.toString("hex"));
+});
 ```
 
 ## Installation
@@ -37,7 +39,6 @@ rnpm link
 * Click on the project in XCode, go to Build Phases, then Link Binary With Libraries and add `libRNRandomBytes.a`
 
 Confused? See an example with screenshots [here](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content)
-
 
 #### `Android`
 
@@ -91,5 +92,4 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         setContentView(mReactRootView);
     }
 ...
-
 ```

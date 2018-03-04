@@ -1,15 +1,68 @@
 {
-  "name": "react-native-randombytes",
-  "version": "3.0.0",
+  "_args": [
+    [
+      {
+        "raw": "react-native-randombytes@^3.0.0",
+        "scope": null,
+        "escapedName": "react-native-randombytes",
+        "name": "react-native-randombytes",
+        "rawSpec": "^3.0.0",
+        "spec": ">=3.0.0 <4.0.0",
+        "type": "range"
+      },
+      "/Users/seno/workspace/p2plending/mobapp2"
+    ]
+  ],
+  "_from": "react-native-randombytes@>=3.0.0 <4.0.0",
+  "_id": "react-native-randombytes@3.0.0",
+  "_inCache": true,
+  "_location": "/react-native-randombytes",
+  "_nodeVersion": "6.11.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/react-native-randombytes-3.0.0.tgz_1503971784310_0.025954154320061207"
+  },
+  "_npmUser": {
+    "name": "tenaciousmv",
+    "email": "mark@tradle.io"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-randombytes@^3.0.0",
+    "scope": null,
+    "escapedName": "react-native-randombytes",
+    "name": "react-native-randombytes",
+    "rawSpec": "^3.0.0",
+    "spec": ">=3.0.0 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-randombytes/-/react-native-randombytes-3.0.0.tgz",
+  "_shasum": "8327464f227a2c42d6ef013b7586b0ad4385ae61",
+  "_shrinkwrap": null,
+  "_spec": "react-native-randombytes@^3.0.0",
+  "_where": "/Users/seno/workspace/p2plending/mobapp2",
+  "author": {
+    "name": "Mark Vayngrib",
+    "email": "mark.vayngrib@lablz.com",
+    "url": "http://github.com/mvayngrib"
+  },
+  "dependencies": {
+    "buffer": "^4.9.1",
+    "sjcl": "^1.0.3"
+  },
   "description": "randomBytes for react-native",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mvayngrib/react-native-randombytes.git"
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8327464f227a2c42d6ef013b7586b0ad4385ae61",
+    "tarball": "https://registry.npmjs.org/react-native-randombytes/-/react-native-randombytes-3.0.0.tgz"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "gitHead": "a7728d7a91b1fafca1f87d9b49117dee1b304aa3",
   "keywords": [
     "react-component",
     "react-native",
@@ -18,10 +71,48 @@
     "ios",
     "android"
   ],
-  "dependencies": {
-    "buffer": "^4.9.1",
-    "sjcl": "^1.0.3"
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "genevayngrib",
+      "email": "gene.vayngrib@tradle.io"
+    },
+    {
+      "name": "pgmemk",
+      "email": "ellen.katsnelson@lablz.com"
+    },
+    {
+      "name": "tenaciousmv",
+      "email": "mark@tradle.io"
+    }
+  ],
+  "name": "react-native-randombytes",
+  "optionalDependencies": {},
+  "readme": "# react-native-randombytes\n\n## Usage\n\n```js\nvar randomBytes = require('react-native-randombytes')\n\n// synchronous API\n// uses SJCL\nvar rand = randomBytes(4)\n\n// asynchronous API\n// uses iOS-side SecRandomCopyBytes\nrandomBytes(4, (err, bytes) => {\n  console.log(bytes.toString('hex'))\n})\n```\n\n## Installation\n\n### Automatic - Android / iOS (recommended)\n\n```bash\nrnpm link\n```\n\n### Manual\n\n#### `iOS`\n\n* Drag RNRandomBytes.xcodeproj from node_modules/react-native-randombytes into your XCode project.\n\n* Click on the project in XCode, go to Build Phases, then Link Binary With Libraries and add `libRNRandomBytes.a`\n\nConfused? See an example with screenshots [here](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content)\n\n\n#### `Android`\n\n* Update Gradle Settings\n\n```gradle\n// file: android/settings.gradle\n...\n\ninclude ':randombytes', ':app'\nproject(':randombytes').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-randombytes/android')\n```\n\n* Update Gradle Build\n\n```gradle\n// file: android/app/build.gradle\n...\n\ndependencies {\n    ...\n    compile project(':randombytes')\n}\n```\n\n* Register React Package\n\n```java\n...\nimport com.bitgo.randombytes.RandomBytesPackage // import\n\npublic class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {\n\n    private ReactInstanceManager mReactInstanceManager;\n    private ReactRootView mReactRootView;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        mReactRootView = new ReactRootView(this);\n        mReactInstanceManager = ReactInstanceManager.builder()\n                .setApplication(getApplication())\n                .setBundleAssetName(\"index.android.bundle\")\n                .setJSMainModuleName(\"index.android\")\n                .addPackage(new MainReactPackage())\n                .addPackage(new RandomBytesPackage()) // register package here\n                .setUseDeveloperSupport(BuildConfig.DEBUG)\n                .setInitialLifecycleState(LifecycleState.RESUMED)\n                .build();\n        mReactRootView.startReactApplication(mReactInstanceManager, \"AwesomeProject\", null);\n        setContentView(mReactRootView);\n    }\n...\n\n```\n",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mark Vayngrib <mark.vayngrib@lablz.com> (http://github.com/mvayngrib)",
-  "license": "ISC"
+  "version": "3.0.0",
+  "react-native": {
+    "crypto": "react-native-crypto",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
+  },
+  "browser": {
+    "crypto": "react-native-crypto",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
+  }
 }
